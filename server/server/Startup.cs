@@ -10,7 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
+using server.Models;
 namespace server
 {
     public class Startup
@@ -25,6 +26,12 @@ namespace server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ExamenContext>(options =>
+
+options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddControllersWithViews();
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
