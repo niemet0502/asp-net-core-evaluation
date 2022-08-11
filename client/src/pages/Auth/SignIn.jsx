@@ -34,7 +34,7 @@ const SignIn = () => {
                 </div>
                 <h6 className="text-muted mt-4 or">Or Sign in with</h6>
                 <div className="social mt-4">
-                  <div className="btn-showcase"><a className="btn btn-light" href="https://www.linkedin.com/login" target="_blank"><i className="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a className="btn btn-light" href="https://twitter.com/login?lang=en" target="_blank"><i className="txt-twitter" data-feather="twitter"></i>twitter</a><a className="btn btn-light" href="https://www.facebook.com/" target="_blank"><i className="txt-fb" data-feather="facebook"></i>facebook</a></div>
+                  <div className="btn-showcase"><a className="btn btn-light" href="https://www.linkedin.com/login" target="_blank" rel="noreferrer"><i className="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a className="btn btn-light" href="https://twitter.com/login?lang=en" target="_blank" rel="noreferrer"><i className="txt-twitter" data-feather="twitter"></i>twitter</a><a className="btn btn-light" href="https://www.facebook.com/" target="_blank" rel="noreferrer"><i className="txt-fb" data-feather="facebook"></i>facebook</a></div>
                 </div>
                 <p className="mt-4 mb-0 text-center">Don't have account?<a className="ms-2" href="sign-up.html">Create Account</a></p>
               </form>
