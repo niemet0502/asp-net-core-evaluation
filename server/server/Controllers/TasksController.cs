@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace server.Controllers
 {
@@ -22,6 +24,7 @@ namespace server.Controllers
 
         // GET: api/Tasks
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Models.Task>>> GetTasks()
         {
             return await _context.Tasks.ToListAsync();
@@ -100,9 +103,34 @@ namespace server.Controllers
             return NoContent();
         }
 
+
+        [HttpPost("MarkAllAsCompleted")]
+        public IActionResult MarkAllAsCompleted()
+        {
+            return Ok("MarkAllAsCompleted");
+        }
+
         private bool TaskExists(int id)
         {
             return _context.Tasks.Any(e => e.ID == id);
+        }
+
+        private Utilisateur GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            if (identity != null)
+            {
+                var userClaims = identity.Claims;
+
+                return new Utilisateur
+                {
+                    FirstName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    Email = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    LastName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
+                };
+            }
+            return null;
         }
     }
 }
