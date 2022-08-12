@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { getStoredAuthToken, storeAuthToken } from '../../utils/currentUser'
-import { history } from '../../utils/history'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { getStoredAuthToken, storeAuthToken } from '../../utils/currentUser';
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault()
@@ -27,7 +28,7 @@ const SignIn = () => {
     const data = await response.json();
     storeAuthToken(data)
 
-    history.push("/employe");
+    navigate("/employe");
 
     } catch (error) {
       console.log("erreir");
@@ -35,7 +36,7 @@ const SignIn = () => {
   }
 
 
-  if(getStoredAuthToken()) history.push("/employe")
+  if(getStoredAuthToken()) return ;
   return (
     <div className="container-fluid p-0">
     <div className="row m-0">
