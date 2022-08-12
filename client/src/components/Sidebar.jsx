@@ -6,7 +6,7 @@ const Sidebar = () => {
 
   if(!getStoredAuthToken()) return;
   return (
-    <div className="page-body-wrapper">
+    
         <div className="sidebar-wrapper">
           <div>
             <div className="logo-wrapper"><a href="index.html"><img className="img-fluid for-light" src="../assets/images/logo/logo.png" alt=""/><img className="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt=""/></a>
@@ -54,7 +54,6 @@ const Sidebar = () => {
                 </ul>
               </div>
             </nav>
-      </div>
       </div>
       </div>
   )
