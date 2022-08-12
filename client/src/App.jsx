@@ -5,6 +5,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/Auth/SignIn";
+import List from "./pages/Users/List";
+import { getStoredAuthToken } from "./utils/currentUser";
  
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
         <Navbar />
         <Sidebar />
         <Routes>
+         {getStoredAuthToken() && <Route path="/employe" element={<List />} />} 
           <Route path="/" element={<SignIn />} />
-          <Route path="/employe" element={<SignIn />} />
         </Routes>
       </div>
     </div>

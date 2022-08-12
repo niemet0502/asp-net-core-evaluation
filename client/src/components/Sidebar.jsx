@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { getStoredAuthToken } from "../utils/currentUser";
+
 
 const Sidebar = () => {
+
+  if(!getStoredAuthToken()) return;
   return (
     <div className="page-body-wrapper">
         <div className="sidebar-wrapper">

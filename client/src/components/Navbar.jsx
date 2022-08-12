@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { getStoredAuthToken } from "../utils/currentUser";
 
 const Navbar = () => {
+
+
+  if(!getStoredAuthToken()) return;
   return (
     <div>
         <div class="page-header">
